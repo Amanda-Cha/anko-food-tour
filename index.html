@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --lions-navy: #00214b;
+            --lions-white: #ffffff;
+            --bg-light: #f0f4f8;
+            --text-dark: #333333;
+            --accent-red: #c62828;
+        }
+
+        body {
+            font-family: "Microsoft JhengHei", "Heiti TC", sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* h1: 深藍底色反白 */
+        header {
+            background-color: var(--lions-navy);
+            color: var(--lions-white);
+            padding: 60px 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.8em;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .container {
+            max-width: 1000px; /* 增加寬度以容納影片 */
+            margin: 30px auto;
+            padding: 20px;
+        }
+        /* h2: 旁邊點綴青海波 */
+        h2 {
+            color: var(--lions-navy);
+            font-size: 2em;
+            font-weight: bold;
+            margin-top: 60px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ccc;
+            display: flex;
+            align-items: center;
+        }
+
+        h2::before {
+            content: "";
+            display: inline-block;
+            width: 40px;
+            height: 25px;
+            margin-right: 15px;
+            background-image: radial-gradient(circle at 100% 150%, var(--lions-navy) 24%, transparent 25%),
+                              radial-gradient(circle at 0 150%, var(--lions-navy) 24%, transparent 25%),
+                              radial-gradient(circle at 50% 100%, var(--lions-navy) 10%, transparent 11%);
+            background-size: 20px 10px;
+            opacity: 0.8;
+        }
+
+        /* 卡片設計：左右並列 */
+        .restaurant-card {
+            background: var(--lions-white);
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            border-left: 12px solid var(--lions-navy);
+            display: flex; /* 使用彈性佈局 */
+            overflow: hidden;
+            align-items: stretch; /* 上下對齊 */
+        }
+
+        /* 左側文字區域 */
+        .text-section {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* 文字垂直置中 */
+        }
+
+        /* 右側影片區域 */
+        .video-section {
+            width: 320px; /* Instagram 嵌入標準寬度 */
+            background: #f9f9f9;
+            border-left: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        iframe {
+            border: none;
+            width: 100%;
+            height: 450px; /* 固定影片高度 */
+        }
+
+        h3 {
+            color: var(--accent-red);
+            font-size: 1.7em;
+            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .info-list li {
+            margin-bottom: 12px;
+            font-size: 1.05em;
+        }
+
+        .label {
+            font-weight: bold;
+            color: var(--lions-navy);
+            background: #eef2f7;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-right: 8px;
+        }
+
+        a {
+            color: #1a73e8;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: var(--accent-red);
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px;
+            color: #888;
+            font-size: 1em;
+        }
+
+        /* 手機版優化：針對螢幕寬度小於 600px 的裝置 */
+@media (max-width: 600px) {
+    header {
+        padding: 30px 15px; /* 縮減標題間距 */
+    }
+
+    h1 {
+        font-size: 1.8em; /* 縮小大標題，避免標題折行太醜 */
+    }
+
+    h2 {
+        font-size: 1.4em;
+    }
+
+    .restaurant-card {
+        flex-direction: column; /* 確保影片在文字下方 */
+    }
+
+    .video-section {
+        width: 100%;
+        height: auto;
+    }
+
+    /* 解決折行問題的核心代碼 */
+    .info-list li {
+        flex-direction: column; /* 讓標籤與內容上下排列 */
+        align-items: flex-start;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #f0f0f0; /* 加一條淡淡的線區隔，增加閱讀性 */
+        padding-bottom: 8px;
+    }
+
+    .label {
+        margin-bottom: 4px; /* 讓標籤跟內容之間有一點小空隙 */
+        background: var(--lions-navy); /* 手機版標籤改深色背景 */
+        color: white;
+        width: fit-content; /* 標籤長度自動適應文字 */
+    }
+    
+    .content {
+        width: 100%;
+        word-break: break-word; /* 確保長網址或文字不會衝出螢幕 */
+    }
+}
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>A.LIN 73🦁春訓休日提案</h1>
+</header>
+
+<div class="container">
+
+    <h2>🦞聽說有人也是海鮮控</h2>
+
+    <div class="restaurant-card">
+        <div class="text-section">
+            <h3>★伊勢海老料理 大海</h3>
+            <ul class="info-list">
+                <li><span class="label">評分</span> Tabelog 3.56 / Google 4.4</li>
+                <li><span class="label">車程</span> 距南鄉中央公園 33 分鐘</li>
+                <li><span class="label">時間</span> 11:00 – 13:30 (週四休)</li>
+                <li><span class="label">特色</span> 「伊勢海老定食」名店。定食份量充足，也能欣賞優美海景</li>
+                <li><span class="label">連結</span> <a href="https://maps.app.goo.gl/wfK3Wy6qoeV7kvXV8" target="_self">Google地圖</a> / <a href="https://www.instagram.com/reel/DLxGBYCv5v0/" target="_self">網友介紹請點圖</a></li>
+            </ul>
+        </div>
+        <div class="video-section">
+            <iframe src="https://www.instagram.com/reel/DLxGBYCv5v0/embed/" scrolling="no"></iframe>
+        </div>
+    </div>
+
+    <div class="restaurant-card">
+        <div class="text-section">
+            <h3>★港の駅めいつ（Minato no Eki Meitsu）</h3>
+            <ul class="info-list">
+                <li><span class="label">評分</span> Tabelog 3.50 / Google 4.0</li>
+                <li><span class="label">車程</span> 距南鄉中央公園 4 分鐘</li>
+                <li><span class="label">時間</span> 10:30-14:00 (週一休)</li>
+                <li><span class="label">特色</span> 漁港直營，招牌料理「炙燒鰹魚重」，體驗一魚三吃樂趣</li>
+                <li><span class="label">連結</span> <a href="https://maps.app.goo.gl/QvkVceHupsfQj5w96" target="_self">Google地圖</a> / <a href="https://www.instagram.com/reel/C6gDCpPS0v4/" target="_self">網友介紹請點圖</a></li>
+            </ul>
+        </div>
+        <div class="video-section">
+            <iframe src="https://www.instagram.com/reel/C6gDCpPS0v4/embed/" scrolling="no"></iframe>
+        </div>
+    </div>
+
+    <div class="restaurant-card">
+        <div class="text-section">
+            <h3>★びびんや（Bibin-ya）</h3>
+            <ul class="info-list">
+                <li><span class="label">評分</span> Tabelog 3.45 / Google 4.0</li>
+                <li><span class="label">車程</span> 距南鄉中央公園 15 分鐘</li>
+                <li><span class="label">時間</span> 11:00-14:30 (週一休)</li>
+                <li><span class="label">特色</span> 除了生魚片，南蠻雞與炸魚排也很受歡迎</li>
+                <li><span class="label">連結</span> <a href="https://maps.app.goo.gl/GLdiKaTh4r6zVEmN8" target="_self">Google地圖</a> / <a href="https://www.instagram.com/reel/DIxyUj5JWdA/" target="_self">網友介紹請點圖</a></li>
+            </ul>
+        </div>
+        <div class="video-section">
+            <iframe src="https://www.instagram.com/reel/DIxyUj5JWdA/embed/" scrolling="no"></iframe>
+        </div>
+    </div>
+
+    <h2>店名有Ito😂能吃到宮崎牛</h2>
+
+    <div class="restaurant-card">
+        <div class="text-section">
+            <h3>★武家屋敷 伊東邸 (Ito Residence)</h3>
+            <ul class="info-list">
+                <li><span class="label">評分</span> Tabelog 3.36 / Google 4.5</li>
+                <li><span class="label">車程</span> 距南鄉中央公園 22 分鐘</li>
+                <li><span class="label">時間</span> 11:00-17:00 (週二休)</li>
+                <li><span class="label">特色</span> 在 130 年武士宅邸用餐。推薦鮪魚丼三吃與甜如布丁的厚燒玉子</li>
+                <li><span class="label">連結</span> <a href="https://maps.app.goo.gl/oFNEbXmBMGcGJdCY9" target="_self">Google地圖</a> / <a href="https://www.instagram.com/p/DKMyvYwxkr2/" target="_self">網友介紹請點圖</a></li>
+            </ul>
+        </div>
+        <div class="video-section">
+            <iframe src="https://www.instagram.com/p/DKMyvYwxkr2/embed/" scrolling="no"></iframe>
+        </div>
+    </div>
+
+    <h2>古民家義大利麵但可能吃不飽😛</h2>
+
+    <div class="restaurant-card">
+        <div class="text-section">
+            <h3>★Tsuyano Fresca (ツヤノフレスカ)</h3>
+            <ul class="info-list">
+                <li><span class="label">評分</span> Tabelog 3.05 / Google 4.9</li>
+                <li><span class="label">車程</span> 距南鄉中央公園 約 8 分鐘</li>
+                <li><span class="label">時間</span> 預約制。11:30–14:30 (只開週四到週六)</li>
+                <li><span class="label">特色</span> 主打使用在地鮮魚與農產製作的季節義大利麵與窯烤料理</li>
+                <li><span class="label">連結</span> <a href="https://maps.app.goo.gl/QxUfTgEUMKMavRSF8" target="_self">Google地圖</a> / <a href="https://www.instagram.com/p/C6qaldBy5Qh/" target="_self">網友介紹請點圖</a></li>
+            </ul>
+        </div>
+        <div class="video-section">
+            <iframe src="https://www.instagram.com/p/C6qaldBy5Qh/embed/" scrolling="no"></iframe>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 A.LIN 春訓休日提案
+</footer>
+
+</body>
+</html>
